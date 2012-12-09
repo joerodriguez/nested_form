@@ -24,7 +24,7 @@ jQuery(function($) {
         var parentNames = context.match(/[a-z_]+_attributes/g) || [];
         var parentIds   = context.match(/[0-9]+/g) || [];
 
-        for(var i = 0; i < parentNames.length; i++) {
+        for(var i = 0; i < (parentNames.length-1); i++) {
           if(parentIds[i]) {
             content = content.replace(
               new RegExp('(_' + parentNames[i] + ')_.+?_', 'g'),
