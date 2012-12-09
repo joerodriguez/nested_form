@@ -1,4 +1,4 @@
-jQuery(function($) {
+(function() {
   window.NestedFormEvents = function() {
     this.addFields = $.proxy(this.addFields, this);
     this.removeFields = $.proxy(this.removeFields, this);
@@ -70,12 +70,12 @@ jQuery(function($) {
         .trigger({ type: 'nested:fieldRemoved:' + assoc, field: field });
       return false;
     }
-  };
+  }).call(this);
 
   window.nestedFormEvents = new NestedFormEvents();
   $(document)
-    .delegate('form a.add_nested_fields',    'click', nestedFormEvents.addFields)
-    .delegate('form a.remove_nested_fields', 'click', nestedFormEvents.removeFields);
+    .on('click', 'form a.add_nested_fields',    nestedFormEvents.addFields)
+    .on('click', 'form a.remove_nested_fields', nestedFormEvents.removeFields);
 });
 
 // http://plugins.jquery.com/project/closestChild
